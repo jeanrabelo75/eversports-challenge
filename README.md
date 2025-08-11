@@ -50,6 +50,18 @@ npm run test:cov
 # HTML report: coverage/lcov-report/index.html
 ```
 
+<h2>Architecture (CSV export)</h2>
+<p align="center"><img src="./task2-architecture.png" alt="Membership export architecture" width="900"></p>
+
+### Flow (at a glance)
+1. **Request** — The user triggers “Export memberships” in the app.
+2. **Acknowledge** — The API records a new export job and returns **202 Accepted** with a **tracking ID** (`exportId`).
+3. **Enqueue** — The job is pushed to a **message queue**.
+4. **Process** — A **background worker** picks up the job and marks it **in progress**.
+5. **Generate CSV** — The worker gathers the user’s memberships and writes the CSV to **file storage**.
+6. **Finalize** — The worker marks the job **completed** (or **failed**) and stores the **file link**.
+7. **Notify** — An email is sent to the user with the **download link**.
+
 ---
 
 ## Design decisions
