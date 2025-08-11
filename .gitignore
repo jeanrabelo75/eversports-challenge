@@ -1,0 +1,26 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tsbuildinfo
+
+# Build / transpile
+dist/
+build/
+
+# Test coverage & cache
+coverage/
+.jest/
+.nyc_output/
+
+# Tooling caches
+.eslintcache
+.stylelintcache
+.cache/
+.ts-node/
+
+# Editors/OS
+.vscode/
+.idea/
